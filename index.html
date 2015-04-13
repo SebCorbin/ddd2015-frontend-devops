@@ -62,7 +62,7 @@
       <h2>Sébastien Corbin - @SebCorbin</h2>
     </section>
 
-    <section>
+    <section data-background="#C21426" data-background-transition="convex">
       <h2>Question yourself</h2>
 
       <p>
@@ -100,22 +100,14 @@
         </div>
       </div>
     </section>
-
-    <section>
-      <h2>Not ... Fast ... enough!</h2>
-
-      <p>
-        <img src="http://i.giphy.com/fQZX2aoRC1Tqw.gif" width="533" height="300"/>
-      </p>
-    </section>
-
-    <section>
+    <section data-background="#C21426" data-background-transition="convex">
       <h2>Script everything!</h2>
 
       <p>
         <img src="http://i.imgur.com/gKNJcmV.jpg" width="500" height="416"/>
       </p>
     </section>
+
 
     <section>
       <h2>Photoshop</h2>
@@ -134,10 +126,18 @@
       </p>
     </section>
 
-    <section>
-      <h2>On the HTML/CSS/JS side</h2>
+    <section data-background="#C21426" data-background-transition="convex">
+      <h2>Not ... Fast ... enough!</h2>
 
-      <h3>Bootstrap web framework</h3>
+      <p>
+        <img src="http://i.giphy.com/fQZX2aoRC1Tqw.gif" width="533" height="300"/>
+      </p>
+    </section>
+
+    <section>
+      <p style="font-style: italic">On the HTML/CSS/JS side: use web frameworks</p>
+
+      <h2>Bootstrap</h2>
 
       <p><strong>Advantages</strong></p>
       <ul>
@@ -172,157 +172,244 @@
         </li>
       </ul>
     </section>
-    
-    <section id="transitions">
-      <h2>Transition Styles</h2>
 
+    <section data-background="#C21426" data-background-transition="convex">
       <p>
-        You can select from different transitions, like: <br>
-        <a href="?transition=none#/transitions">None</a> -
-        <a href="?transition=fade#/transitions">Fade</a> -
-        <a href="?transition=slide#/transitions">Slide</a> -
-        <a href="?transition=convex#/transitions">Convex</a> -
-        <a href="?transition=concave#/transitions">Concave</a> -
-        <a href="?transition=zoom#/transitions">Zoom</a>
-      </p>
-    </section>
-
-    <section id="themes">
-      <h2>Themes</h2>
-
-      <p>
-        reveal.js comes with a few themes built in: <br>
-        <!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a>
-        <br>
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+        Is it worth the time?<br/>
+        <img src="https://imgs.xkcd.com/comics/is_it_worth_the_time.png" width="571" height="464"><br/>
+        (most of the time: yes)
       </p>
     </section>
 
     <section>
-      <section data-background="#dddddd">
-        <h2>Slide Backgrounds</h2>
+      <img src="http://www.codingpedia.org/wp-content/uploads/2014/04/gulp-2x.png" width="240" height="240" style="float: left" class="no-style">
 
-        <p>
-          Set
-          <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-        </p>
-        <a href="#" class="navigate-down">
-          <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-        </a>
-      </section>
-      <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-        <h2>Image Backgrounds</h2>
-        <pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-      </section>
-      <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-        <h2>Tiled Backgrounds</h2>
-        <pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-      </section>
-      <section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-        <div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-          <h2>Video Backgrounds</h2>
-          <pre><code style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-        </div>
-      </section>
-    </section>
+      <h2>Gulp</h2>
 
-    <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-      <h2>Background Transitions</h2>
-
-      <p>
-        Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-      </p>
-      <pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-    </section>
-
-    <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-      <h2>Background Transitions</h2>
-
-      <p>
-        You can override background transitions per-slide.
-      </p>
-      <pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
-    </section>
-
-    <section>
-      <h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-            function linkify( selector ) {
-            if( supports3DTransforms ) {
-
-            var nodes = document.querySelectorAll( selector );
-
-            for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-            var node = nodes[i];
-
-            if( !node.className ) {
-            node.className += ' roll';
-            }
-            }
-            }
-            }
-          </code></pre>
-      <p>Code syntax highlighting courtesy of
-        <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.
-      </p>
-    </section>
-
-    <section>
-      <h2>Marvelous List</h2>
+      <p>All-purpose task automator</p>
       <ul>
-        <li>No order here</li>
-        <li>Or here</li>
-        <li>Or here</li>
-        <li>Or here</li>
+        <li>NodeJS-based</li>
+        <li>Alternatives: Grunt, Brunch</li>
+        <li>Stream-based (less I/O than Grunt)</li>
+        <li>Less plugins than Grunt</li>
       </ul>
     </section>
 
     <section>
-      <h2>Fantastic Ordered List</h2>
-      <ol>
-        <li>One is smaller than...</li>
-        <li>Two is smaller than...</li>
-        <li>Three!</li>
-      </ol>
+      <h2>What kind of tasks?</h2>
+
+      <ul>
+        <li>Convert LESS/SASS to CSS</li>
+        <li>Minify/Obfuscate CSS/JS</li>
+        <li>Check JS/SASS syntax</li>
+        <li>Create sprites/icon fonts</li>
+        <li>Test CSS regressions</li>
+        <li>Run JS tests</li>
+        <li>Analyse/Tackle performance tasks</li>
+        <li>Reload browser on change</li>
+        <li>Add/Commit/Push files to Git repo</li>
+        <li>Upload files to FTP</li>
+      </ul>
     </section>
 
     <section>
-      <h2>Tabular Tables</h2>
-      <table>
-        <thead>
-        <tr>
-          <th>Item</th>
-          <th>Value</th>
-          <th>Quantity</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>Apples</td>
-          <td>$1</td>
-          <td>7</td>
-        <tr>
-        <tr>
-          <td>Lemonade</td>
-          <td>$2</td>
-          <td>18</td>
-        <tr>
-        <tr>
-          <td>Bread</td>
-          <td>$3</td>
-          <td>2</td>
-        <tr>
-        </tbody>
-      </table>
+      <span>Gulp installation</span>
+      <pre><code># Prérequis, installer NodeJS
+        npm install --global gulp</code></pre>
+
+      <span>Plugin installation</span>
+      <pre><code>npm install --save-dev gulp-cssmin # Ecrit la version dans package.json</code></pre>
+
+      <span>Task definition</span>
+      <pre><code>var gulp = require('gulp');
+        var cssmin = require('gulp-cssmin');
+
+        gulp.task('default', function () {
+        gulp.src('src/**/*.css')
+        .pipe(cssmin())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest('dist'));
+        });</code></pre>
+
+      <p>Then launch <code>gulp</code> in your terminal</p>
+    </section>
+
+    <section>
+      <h2>Plugins</h2>
+
+      <ul style="font-size: .9em">
+        <li>Bundled : <em>watch</em>, run task everytime a file is changed</li>
+        <li class="fragment" data-fragment-index="0">
+          <a href="http://gulpjs.com/plugins/" target="_blank">1482 plugins</a> as of today
+        </li>
+        <li class="fragment" data-fragment-index="1">Some useful examples:
+          <ul>
+            <li>
+              <em>autoprefixer</em>: prefix automatically CSS3 vendor-specific properties
+            </li>
+            <li>
+              <em>livereload</em>: reload automatically a browser page when a task ends
+            </li>
+            <li>
+              <em>criticalcss</em>: compute required above-the-fold CSS for inlining
+            </li>
+            <li>
+              <em>sourcemaps</em>: map uncompiled CSS/JS referenced in HTML element
+            </li>
+            <li>
+              <em>base64</em>: convert and inline small images to base64
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section style="top: 0">
+					<pre style="margin: -50px 0 0;width: 100%"><code style="max-height: 650px">var gulp = require('gulp');
+            var uglify = require('gulp-uglify');
+            var jshint = require('gulp-jshint');
+            var less = require('gulp-less');
+            var cssmin = require('gulp-minify-css');
+            var concat = require('gulp-concat');
+            var gzip = require('gulp-gzip');
+            var imagemin = require('gulp-imagemin');
+            var rename = require('gulp-rename');
+            var sourcemaps = require('gulp-sourcemaps');
+            var pngquant = require('imagemin-pngquant');
+            var iconfont = require('gulp-iconfont');
+            var spritesmith = require('gulp.spritesmith');
+
+            var use_sourcemaps = true;
+
+            // Concat and minify JS, reading map.json
+            gulp.task('js', function () {
+            var map = require('./js/map.json'), list = [];
+            for (var i in map) {
+            if (map.hasOwnProperty(i) && map[i]) {
+            // Make relative to drupal path
+            list.push('../../../../' + i);
+            }
+            }
+            var pipe = gulp.src(list);
+            if (use_sourcemaps) {
+            pipe = pipe.pipe(sourcemaps.init());
+            }
+            pipe = pipe.pipe(concat('script.min.js'))
+            .pipe(uglify());
+            if (use_sourcemaps) {
+            pipe = pipe.pipe(sourcemaps.write('./maps'));
+            }
+            return pipe.pipe(gulp.dest('./dist/'))
+            .pipe(gzip())
+            .pipe(gulp.dest('./dist/')).on('error', errorHandler);
+            });
+
+
+            // LESS compilation
+            gulp.task('less', function () {
+            var pipe = gulp.src('./less/style.less');
+            if (use_sourcemaps) {
+            pipe = pipe.pipe(sourcemaps.init());
+            }
+            pipe = pipe
+            .pipe(less()).on('error', errorHandler)
+            .pipe(cssmin()).on('error', errorHandler)
+            .pipe(rename({suffix: '.min'})).on('error', errorHandler);
+            if (use_sourcemaps) {
+            pipe = pipe.pipe(sourcemaps.write('./maps'));
+            }
+            return pipe
+            .pipe(gulp.dest('./dist/')).on('error', errorHandler)
+            .pipe(gzip()).on('error', errorHandler)
+            .pipe(gulp.dest('./dist/')).on('error', errorHandler);
+            });
+
+            // Image optimisation
+            gulp.task('images', function () {
+            return gulp.src(['./img*/*', './dist*/sprite.png'])
+            .pipe(imagemin({
+            progressive: true,
+            use: [pngquant()]
+            })).on('error', errorHandler)
+            .pipe(gulp.dest('.')).on('error', errorHandler);
+            });
+
+            // Icons
+            gulp.task('icons', function () {
+            return gulp.src('svg/*')
+            .pipe(iconfont({
+            fontName: 'iconsfont',
+            appendCodepoints: true,
+            normalize: true
+            }))
+            .pipe(gulp.dest('./dist/'))
+            });
+
+            // Sprites
+            gulp.task('sprite', function () {
+            var spriteData =
+            gulp.src('img/sprite/*.*') // source path of the sprite images
+            .pipe(spritesmith({
+            imgName: 'sprite.png?' + (new Date).getTime(),
+            cssName: 'sprite.less',
+            algorithm: 'binary-tree'
+            }));
+
+            // output path for the sprite
+            spriteData.img.pipe(rename('sprite.png')).pipe(gulp.dest('./dist/'));
+            // output path for the CSS
+            spriteData.css.pipe(gulp.dest('./less/'));
+            });
+
+            gulp.task('default', ['jshint', 'js', 'sprite', 'images', 'less', 'icons']);
+
+            gulp.task('watch', function () {
+            gulp.watch(['./js/*', '../../modules/**/*.js'], ['js', 'jshint']);
+            gulp.watch('./less/*.less', ['less']);
+            gulp.watch('./img/*', ['images', 'sprite', 'less']);
+            gulp.watch('./svg/*', ['icons']);
+            });
+
+            // Handle the errors
+            function errorHandler (error) {
+            console.log(error.toString());
+            this.emit('end');
+            }</code></pre>
+    </section>
+
+    <section data-background="#C21426" data-background-transition="convex">
+      <p>Hmmm, still too many Alt+Tab...</p>
+      <img src="http://i.giphy.com/W0rn83tb8a1yM.gif" width="500" height="279"/>
+
+      <p>What if we could code directly in the browser<br/> and see our changes live?!?
+      </p>
+    </section>
+
+    <section>
+      <h3>Meet the powerful Chrome DevTools</h3>
+
+      <p>
+        <img src="lib/image/sourcemaps.png" width="313" height="75" style="float: left"/>
+        Sourcemaps links take you directly to the source code at the right selector
+      </p>
+      <p style="text-align: left">
+        <img src="lib/image/settings.png" width="399" height="324" style="float: left;margin-right: 1em"/>
+        Provided features:
+      </p>
+      <ul>
+        <li>Syntax highlighting</li>
+        <li>Shortcuts</li>
+        <li>Basic autocomplete</li>
+        <li>Simple search and navigation</li>
+        <li>Link to local files</li>
+        <li>Reloading of CSS files</li>
+      </ul>
+    </section>
+
+    <section data-background="#C21426" data-background-transition="convex">
+      <h2>Demo</h2>
+      <img src="http://i.giphy.com/CzbiCJTYOzHTW.gif" width="500" height="281"/>
+      <p style="font-style: italic">♬ ... elevator music ... ♪</p>
     </section>
 
     <section>
