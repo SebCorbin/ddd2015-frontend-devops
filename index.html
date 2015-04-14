@@ -62,6 +62,13 @@
       <h2>Sébastien Corbin - @SebCorbin</h2>
     </section>
 
+    <section>
+      <h2>Who am I?</h2>
+
+      <p>Sébastien Corbin - @SebCorbin</p>
+      <img src="http://makinacorpus.github.io/makina-slides/theme_extra/logo.png" width="298" height="212" class="no-style"/>
+    </section>
+
     <section data-background="#C21426" data-background-transition="convex">
       <h2>Question yourself</h2>
 
@@ -80,7 +87,7 @@
     </section>
     <section>
       <h2>Basic integration workflow</h2>
-      <img src="lib/image/basic_workflow.png" width="758" height="423" class="no-style"/>
+      <img src="lib/image/basic_workflow.png" width="936" height="425" class="no-style"/>
     </section>
 
     <!-- Example of nested vertical slides -->
@@ -88,7 +95,7 @@
       <h2>Real integration workflow</h2>
 
       <div style="position: relative">
-        <img src="lib/image/advanced_workflow.png" width="869" height="511" class="no-style"/>
+        <img src="lib/image/advanced_workflow.png" width="996" height="508" class="no-style"/>
         <img src="lib/image/alt-tab.png" class="no-style fragment" style="position: absolute;top: 17%;left: 13%"/>
         <img src="lib/image/alt-tab.png" class="no-style fragment" style="position: absolute;top: 72%;left: 10%"/>
         <img src="lib/image/alt-tab.png" class="no-style fragment" style="position: absolute;top: 10px;left: 30%"/>
@@ -266,115 +273,115 @@
 
     <section style="top: 0">
 					<pre style="margin: -50px 0 0;width: 100%"><code style="max-height: 650px">var gulp = require('gulp');
-            var uglify = require('gulp-uglify');
-            var jshint = require('gulp-jshint');
-            var less = require('gulp-less');
-            var cssmin = require('gulp-minify-css');
-            var concat = require('gulp-concat');
-            var gzip = require('gulp-gzip');
-            var imagemin = require('gulp-imagemin');
-            var rename = require('gulp-rename');
-            var sourcemaps = require('gulp-sourcemaps');
-            var pngquant = require('imagemin-pngquant');
-            var iconfont = require('gulp-iconfont');
-            var spritesmith = require('gulp.spritesmith');
+var uglify = require('gulp-uglify');
+var jshint = require('gulp-jshint');
+var less = require('gulp-less');
+var cssmin = require('gulp-minify-css');
+var concat = require('gulp-concat');
+var gzip = require('gulp-gzip');
+var imagemin = require('gulp-imagemin');
+var rename = require('gulp-rename');
+var sourcemaps = require('gulp-sourcemaps');
+var pngquant = require('imagemin-pngquant');
+var iconfont = require('gulp-iconfont');
+var spritesmith = require('gulp.spritesmith');
 
-            var use_sourcemaps = true;
+var use_sourcemaps = true;
 
-            // Concat and minify JS, reading map.json
-            gulp.task('js', function () {
-            var map = require('./js/map.json'), list = [];
-            for (var i in map) {
-            if (map.hasOwnProperty(i) && map[i]) {
-            // Make relative to drupal path
-            list.push('../../../../' + i);
-            }
-            }
-            var pipe = gulp.src(list);
-            if (use_sourcemaps) {
-            pipe = pipe.pipe(sourcemaps.init());
-            }
-            pipe = pipe.pipe(concat('script.min.js'))
-            .pipe(uglify());
-            if (use_sourcemaps) {
-            pipe = pipe.pipe(sourcemaps.write('./maps'));
-            }
-            return pipe.pipe(gulp.dest('./dist/'))
-            .pipe(gzip())
-            .pipe(gulp.dest('./dist/')).on('error', errorHandler);
-            });
+// Concat and minify JS, reading map.json
+gulp.task('js', function () {
+  var map = require('./js/map.json'), list = [];
+  for (var i in map) {
+    if (map.hasOwnProperty(i) && map[i]) {
+      // Make relative to drupal path
+      list.push('../../../../' + i);
+    }
+  }
+  var pipe = gulp.src(list);
+  if (use_sourcemaps) {
+    pipe = pipe.pipe(sourcemaps.init());
+  }
+  pipe = pipe.pipe(concat('script.min.js'))
+      .pipe(uglify());
+  if (use_sourcemaps) {
+    pipe = pipe.pipe(sourcemaps.write('./maps'));
+  }
+  return pipe.pipe(gulp.dest('./dist/'))
+      .pipe(gzip())
+      .pipe(gulp.dest('./dist/')).on('error', errorHandler);
+});
 
 
-            // LESS compilation
-            gulp.task('less', function () {
-            var pipe = gulp.src('./less/style.less');
-            if (use_sourcemaps) {
-            pipe = pipe.pipe(sourcemaps.init());
-            }
-            pipe = pipe
-            .pipe(less()).on('error', errorHandler)
-            .pipe(cssmin()).on('error', errorHandler)
-            .pipe(rename({suffix: '.min'})).on('error', errorHandler);
-            if (use_sourcemaps) {
-            pipe = pipe.pipe(sourcemaps.write('./maps'));
-            }
-            return pipe
-            .pipe(gulp.dest('./dist/')).on('error', errorHandler)
-            .pipe(gzip()).on('error', errorHandler)
-            .pipe(gulp.dest('./dist/')).on('error', errorHandler);
-            });
+// LESS compilation
+gulp.task('less', function () {
+  var pipe = gulp.src('./less/style.less');
+  if (use_sourcemaps) {
+    pipe = pipe.pipe(sourcemaps.init());
+  }
+  pipe = pipe
+      .pipe(less()).on('error', errorHandler)
+      .pipe(cssmin()).on('error', errorHandler)
+      .pipe(rename({suffix: '.min'})).on('error', errorHandler);
+  if (use_sourcemaps) {
+    pipe = pipe.pipe(sourcemaps.write('./maps'));
+  }
+  return pipe
+      .pipe(gulp.dest('./dist/')).on('error', errorHandler)
+      .pipe(gzip()).on('error', errorHandler)
+      .pipe(gulp.dest('./dist/')).on('error', errorHandler);
+});
 
-            // Image optimisation
-            gulp.task('images', function () {
-            return gulp.src(['./img*/*', './dist*/sprite.png'])
-            .pipe(imagemin({
-            progressive: true,
-            use: [pngquant()]
-            })).on('error', errorHandler)
-            .pipe(gulp.dest('.')).on('error', errorHandler);
-            });
+// Image optimisation
+gulp.task('images', function () {
+  return gulp.src(['./img*/*', './dist*/sprite.png'])
+      .pipe(imagemin({
+        progressive: true,
+        use: [pngquant()]
+      })).on('error', errorHandler)
+      .pipe(gulp.dest('.')).on('error', errorHandler);
+});
 
-            // Icons
-            gulp.task('icons', function () {
-            return gulp.src('svg/*')
-            .pipe(iconfont({
-            fontName: 'iconsfont',
-            appendCodepoints: true,
-            normalize: true
-            }))
-            .pipe(gulp.dest('./dist/'))
-            });
+// Icons
+gulp.task('icons', function () {
+  return gulp.src('svg/*')
+      .pipe(iconfont({
+        fontName: 'iconsfont',
+        appendCodepoints: true,
+        normalize: true
+      }))
+      .pipe(gulp.dest('./dist/'))
+});
 
-            // Sprites
-            gulp.task('sprite', function () {
-            var spriteData =
-            gulp.src('img/sprite/*.*') // source path of the sprite images
-            .pipe(spritesmith({
+// Sprites
+gulp.task('sprite', function () {
+  var spriteData =
+      gulp.src('img/sprite/*.*') // source path of the sprite images
+          .pipe(spritesmith({
             imgName: 'sprite.png?' + (new Date).getTime(),
             cssName: 'sprite.less',
             algorithm: 'binary-tree'
-            }));
+          }));
 
-            // output path for the sprite
-            spriteData.img.pipe(rename('sprite.png')).pipe(gulp.dest('./dist/'));
-            // output path for the CSS
-            spriteData.css.pipe(gulp.dest('./less/'));
-            });
+// output path for the sprite
+  spriteData.img.pipe(rename('sprite.png')).pipe(gulp.dest('./dist/'));
+// output path for the CSS
+  spriteData.css.pipe(gulp.dest('./less/'));
+});
 
-            gulp.task('default', ['jshint', 'js', 'sprite', 'images', 'less', 'icons']);
+gulp.task('default', ['jshint', 'js', 'sprite', 'images', 'less', 'icons']);
 
-            gulp.task('watch', function () {
-            gulp.watch(['./js/*', '../../modules/**/*.js'], ['js', 'jshint']);
-            gulp.watch('./less/*.less', ['less']);
-            gulp.watch('./img/*', ['images', 'sprite', 'less']);
-            gulp.watch('./svg/*', ['icons']);
-            });
+gulp.task('watch', function () {
+  gulp.watch(['./js/*', '../../modules/**/*.js'], ['js', 'jshint']);
+  gulp.watch('./less/*.less', ['less']);
+  gulp.watch('./img/*', ['images', 'sprite', 'less']);
+  gulp.watch('./svg/*', ['icons']);
+});
 
-            // Handle the errors
-            function errorHandler (error) {
-            console.log(error.toString());
-            this.emit('end');
-            }</code></pre>
+// Handle the errors
+function errorHandler(error) {
+  console.log(error.toString());
+  this.emit('end');
+}</code></pre>
     </section>
 
     <section data-background="#C21426" data-background-transition="convex">
