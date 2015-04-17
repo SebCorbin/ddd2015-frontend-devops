@@ -46,10 +46,12 @@
       <p class="logo__site-name">#drupaldevdays</p>
     </div>
     <div class="session--info">
-      <p class="session__title">Be a lazy front-end developer with kick-ass page performance<span class="seperator">&nbsp;/&nbsp;</span>
+      <p class="session__title">
+        Be a lazy front-end developer<br/>
+        with kick-ass page performance<span class="seperator">&nbsp;/&nbsp;</span>
       </p>
 
-      <p class="session__presenter">SebCorbin</p>
+      <p class="session__presenter">@SebCorbin</p>
     </div>
   </footer>
   <!-- Any section element inside of this container is displayed as a slide -->
@@ -67,6 +69,10 @@
 
       <p>Sébastien Corbin - @SebCorbin</p>
       <img src="http://makinacorpus.github.io/makina-slides/theme_extra/logo.png" width="298" height="212" class="no-style"/>
+      <img src="http://montpellier2015.drupaldays.org/sites/default/files/sponsor-3-healthyfood.png" width="250" height="250" class="no-style"/>
+      <p style="font-size: .8em">Taking care of your diet / Drupal issues<br/>
+        <em>Slides online at <a href="http://bit.ly/ddd_banana">bit.ly/ddd_banana</a></em>
+      </p>
     </section>
 
     <section data-background="#C21426" data-background-transition="convex">
@@ -189,6 +195,41 @@
     </section>
 
     <section>
+      <h2>Some performance knowledge</h2>
+      <img src="lib/image/waterfall.png" width="720" height="326.5" />
+    </section>
+
+    <section style="text-align: left">
+      <h3>DomContentLoaded event</h3>
+      <p>Fired when the document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading</p>
+      <h3>Load event</h3>
+      <p>Fired when a resource and its dependent resources have finished loading</p>
+    </section>
+
+    <section style="text-align: left">
+      <h3>FOUC</h3>
+      <p>Flash of Unstyled Content, moment during a web page appears briefly with the browser's default styles prior to loading an external CSS stylesheet. This shift is quite visible and distracting</p>
+      <h3>RTT/RTD</h3>
+      <p>Round-trip time, length of time it takes for a request to be sent and received, huge dependency on TCP and environemental factors (espacially for mobiles)</p>
+    </section>
+
+    <section style="text-align: left">
+      <h3>Reminder</h3>
+      <ul>
+        <li>The less requests, the better</li>
+        <li>Watch out for the size, it may be better to split & parallelize</li>
+        <li>Think about you ressource ordering</li>
+        <li>Avoid external resources, <code>defer</code> all of them</li>
+        <li>Equip yourself with Varnish and/or CDN (with CDN prefetch)</li>
+      </ul>
+    </section>
+
+    <section data-background="#C21426" data-background-transition="convex">
+      <p>Ok, let's fast forward...</p>
+      <img src="http://i.giphy.com/W0rn83tb8a1yM.gif" width="500" height="279"/>
+    </section>
+
+    <section>
       <img src="http://www.codingpedia.org/wp-content/uploads/2014/04/gulp-2x.png" width="240" height="240" style="float: left" class="no-style">
 
       <h2>Gulp</h2>
@@ -221,22 +262,22 @@
 
     <section>
       <span>Gulp installation</span>
-      <pre><code># Prérequis, installer NodeJS
-        npm install --global gulp</code></pre>
+      <pre><code># Prerequisisite, install NodeJS
+npm install --global gulp</code></pre>
 
       <span>Plugin installation</span>
-      <pre><code>npm install --save-dev gulp-cssmin # Ecrit la version dans package.json</code></pre>
+      <pre><code>npm install --save-dev gulp-cssmin # Writes version to package.json</code></pre>
 
       <span>Task definition</span>
       <pre><code>var gulp = require('gulp');
-        var cssmin = require('gulp-cssmin');
+var cssmin = require('gulp-cssmin');
 
-        gulp.task('default', function () {
-        gulp.src('src/**/*.css')
-        .pipe(cssmin())
-        .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest('dist'));
-        });</code></pre>
+gulp.task('default', function () {
+  gulp.src('src/**/*.css')
+      .pipe(cssmin())
+      .pipe(rename({suffix: '.min'}))
+      .pipe(gulp.dest('dist'));
+});</code></pre>
 
       <p>Then launch <code>gulp</code> in your terminal</p>
     </section>
@@ -384,6 +425,39 @@ function errorHandler(error) {
 }</code></pre>
     </section>
 
+    <section>
+      <h3>Quite a big file huh?</h3>
+      <p>Let's automate that with Drupal</p>
+
+      <p>&nbsp;</p>
+      <p>Meet <a href="https://github.com/makinacorpus/drupal-gulpifier">gulpifier</a>, a module that helps you set up your gulpfile</p>
+    </section>
+
+    <section>
+      <h2>Drupal flows</h2>
+      <dl>
+        <dt>Too many assets requests</dt>
+        <dd>3 or 4 CSS/JS bundles per page, can be reduced with advagg</dd>
+        <dt>Poor minification</dt>
+        <dd>CSS: only comments and whitespace removed, JS: aggregation only</dd>
+        <dt>Every module adds its own assets</dt>
+        <dd>Not everyone knows about <code>#attached</code> property</dd>
+      </dl>
+    </section>
+
+    <section>
+      <h2>Propositions</h2>
+      <dl>
+        <dt>Too many assets requests</dt>
+        <dd>Keep a single CSS and JS file, most of the time, allow a whitelist for the rest</dd>
+        <dt>Poor minification</dt>
+        <dd>Use heavily used gulp plugins, providing production-ready files</dd>
+        <dt>Every module adds its own assets</dt>
+        <dd>Better to start from scratch, blacklist everything else</dd>
+      </dl>
+    </section>
+
+<!--
     <section data-background="#C21426" data-background-transition="convex">
       <p>Hmmm, still too many Alt+Tab...</p>
       <img src="http://i.giphy.com/W0rn83tb8a1yM.gif" width="500" height="279"/>
@@ -412,119 +486,21 @@ function errorHandler(error) {
         <li>Reloading of CSS files</li>
       </ul>
     </section>
-
+-->
     <section data-background="#C21426" data-background-transition="convex">
       <h2>Demo</h2>
       <img src="http://i.giphy.com/CzbiCJTYOzHTW.gif" width="500" height="281"/>
       <p style="font-style: italic">♬ ... elevator music ... ♪</p>
     </section>
 
-    <section>
-      <h2>Clever Quotes</h2>
-
-      <p>
-        These guys come in two forms, inline:
-        <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-          &ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-      </p>
-      <blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-        &ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-        reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-      </blockquote>
+    <section data-background="#C21426" data-background-transition="convex">
+      <h2>Questions?</h2>
+      <img src="http://www.reactiongifs.com/r/2013/10/tim-and-eric-mind-blown.gif" width="315" height="210"/>
     </section>
 
-    <section>
-      <h2>Intergalactic Interconnections</h2>
-
-      <p>
-        You can link between slides internally,
-        <a href="#/2/3">like this</a>.
-      </p>
-    </section>
-
-    <section>
-      <h2>Speaker View</h2>
-
-      <p>There's a
-        <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.
-      </p>
-
-      <p>Press the <em>S</em> key to try it out.</p>
-
-      <aside class="notes">
-        Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-      </aside>
-    </section>
-
-    <section>
-      <h2>Export to PDF</h2>
-
-      <p>Presentations can be
-        <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:
-      </p>
-      <iframe src="//www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen></iframe>
-    </section>
-
-    <section>
-      <h2>Global State</h2>
-
-      <p>
-        Set <code>data-state="something"</code> on a slide and
-        <code>"something"</code>
-        will be added as a class to the document element when the slide is open. This lets you
-        apply broader style changes, like switching the page background.
-      </p>
-    </section>
-
-    <section data-state="customevent">
-      <h2>State Events</h2>
-
-      <p>
-        Additionally custom events can be triggered on a per slide basis by binding to the
-        <code>data-state</code> name.
-      </p>
-					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-            Reveal.addEventListener( 'customevent', function() {
-            console.log( '"customevent" has fired' );
-            } );
-          </code></pre>
-    </section>
-
-    <section>
-      <h2>Take a Moment</h2>
-
-      <p>
-        Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-      </p>
-    </section>
-
-    <section>
-      <h2>Much more</h2>
-      <ul>
-        <li>Right-to-left support</li>
-        <li>
-          <a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a>
-        </li>
-        <li>
-          <a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a>
-        </li>
-        <li>
-          <a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a>
-        </li>
-        <li>
-          <a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a>
-        </li>
-      </ul>
-    </section>
-
-    <section style="text-align: left;">
-      <h1>THE END</h1>
-
-      <p>
-        - <a href="http://slides.com">Try the online editor</a> <br>
-        -
-        <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-      </p>
+    <section data-background="#C21426" data-background-transition="convex">
+      <h2>Thank you</h2>
+      <img src="" width="315" height="210"/>
     </section>
 
   </div>
